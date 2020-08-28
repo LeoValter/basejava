@@ -1,3 +1,7 @@
+package ru.leovalter.webapp.storage;
+
+import ru.leovalter.webapp.model.Resume;
+
 import java.util.Arrays;
 
 /**
@@ -8,34 +12,34 @@ public class ArrayStorage {
     private final Resume[] storage = new Resume[10000];
     private int size = 0;
 
-    void clear() {
+    public void clear() {
         Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
-    void save(Resume r) {
-        if (r.uuid == null) {
+    public void save(Resume r) {
+        if (r.getUuid() == null) {
             System.out.println("Failed to save resume. Null cannot be stored...");
         } else if (size > storage.length - 1) {
             System.out.println("Failed to save resume. Storage is full...");
-        } else if (get(r.uuid) == null) {
+        } else if (get(r.getUuid()) == null) {
             storage[size] = r;
             size++;
         }
     }
 
-    Resume get(String uuid) {
+    public Resume get(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].uuid)) {
+            if (uuid.equals(storage[i].getUuid())) {
                 return storage[i];
             }
         }
         return null;
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].uuid)) {
+            if (uuid.equals(storage[i].getUuid())) {
                 System.arraycopy(storage, i + 1, storage, i, size - i - 1);
                 storage[size - 1] = null;
                 size--;
@@ -47,11 +51,11 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
+    public Resume[] getAll() {
         return Arrays.copyOfRange(storage, 0, size);
     }
 
-    int size() {
+    public int size() {
         return this.size;
     }
 }
