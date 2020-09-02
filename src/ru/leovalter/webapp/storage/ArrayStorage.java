@@ -9,7 +9,9 @@ import java.util.Arrays;
  */
 public class ArrayStorage {
 
-    private final Resume[] storage = new Resume[10000];
+    private static final int STORAGE_LIMIT = 10000;
+
+    private final Resume[] storage = new Resume[STORAGE_LIMIT];
     private int size = 0;
 
     public void clear() {
@@ -20,7 +22,7 @@ public class ArrayStorage {
     public void save(Resume resume) {
         if (getIndex(resume.getUuid()) != -1) {
             System.out.println("Resume " + resume.getUuid() + " already exist...");
-        } else if (size == storage.length) {
+        } else if (size == STORAGE_LIMIT) {
             System.out.println("Failed to save resume. Storage is overflow...");
         } else {
             storage[size] = resume;
@@ -57,23 +59,21 @@ public class ArrayStorage {
         }
     }
 
-    /**
-     * @return array, contains only Resumes in storage (without null)
-     */
     public Resume[] getAll() {
         return Arrays.copyOfRange(storage, 0, size);
     }
 
     public int size() {
-        return this.size;
+        return size;
     }
 
     private int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (uuid == storage[i].getUuid()) {
+            if (uuid.equals(storage[i].getUuid())) {
                 return i;
             }
         }
         return -1;
     }
+
 }
