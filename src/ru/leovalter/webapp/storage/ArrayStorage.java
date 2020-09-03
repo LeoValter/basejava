@@ -2,60 +2,19 @@ package ru.leovalter.webapp.storage;
 
 import ru.leovalter.webapp.model.Resume;
 
-import java.util.Arrays;
-
 /**
  * Array based storage for Resumes
  */
 public class ArrayStorage extends AbstractArrayStorage {
 
-    public void clear() {
-        Arrays.fill(storage, 0, size, null);
-        size = 0;
+    @Override
+    protected void insertElement(Resume resume, int index) {
+        storage[size] = resume;
     }
 
-    public void save(Resume resume) {
-        if (getIndex(resume.getUuid()) != -1) {
-            System.out.println("Resume " + resume.getUuid() + " already exist...");
-        } else if (size == STORAGE_LIMIT) {
-            System.out.println("Failed to save resume. Storage is overflow...");
-        } else {
-            storage[size] = resume;
-            size++;
-        }
-    }
-
-    public void update(Resume resume) {
-        int index = getIndex(resume.getUuid());
-        if (index == -1) {
-            System.out.println("Resume " + resume.getUuid() + " not exist...");
-        } else {
-            storage[index] = resume;
-        }
-    }
-
-    public Resume get(String uuid) {
-        int index = getIndex(uuid);
-        if (index == -1) {
-            System.out.println("Resume " + uuid + " not exist");
-            return null;
-        }
-        return storage[index];
-    }
-
-    public void delete(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].getUuid())) {
-                System.arraycopy(storage, i + 1, storage, i, size - i - 1);
-                storage[size - 1] = null;
-                size--;
-                break;
-            }
-        }
-    }
-
-    public Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
+    @Override
+    protected void fillDeletedElement(int index) {
+        storage[index] = storage[size - 1];
     }
 
     protected int getIndex(String uuid) {

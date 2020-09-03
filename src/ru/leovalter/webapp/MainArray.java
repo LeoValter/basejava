@@ -2,6 +2,7 @@ package ru.leovalter.webapp;
 
 import ru.leovalter.webapp.model.Resume;
 import ru.leovalter.webapp.storage.ArrayStorage;
+import ru.leovalter.webapp.storage.SortedArrayStorage;
 import ru.leovalter.webapp.storage.Storage;
 
 import java.io.BufferedReader;
@@ -13,7 +14,7 @@ import java.io.InputStreamReader;
  * (just run, no need to understand)
  */
 public class MainArray {
-    private final static Storage ARRAY_STORAGE = new ArrayStorage();
+    private final static Storage ARRAY_STORAGE = new SortedArrayStorage();
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
