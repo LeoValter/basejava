@@ -1,9 +1,9 @@
-package ru.leovalter.webapp.storage;
+package ru.leovalter.basejava.storage;
 
-import ru.leovalter.webapp.exception.ExistStorageException;
-import ru.leovalter.webapp.exception.NotExistStorageException;
-import ru.leovalter.webapp.exception.StorageException;
-import ru.leovalter.webapp.model.Resume;
+import ru.leovalter.basejava.exception.ExistStorageException;
+import ru.leovalter.basejava.exception.NotExistStorageException;
+import ru.leovalter.basejava.exception.StorageException;
+import ru.leovalter.basejava.model.Resume;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package ru.leovalter.webapp.exception;
+package ru.leovalter.basejava.exception;
 
 public class StorageException extends RuntimeException {
     private final String uuid;

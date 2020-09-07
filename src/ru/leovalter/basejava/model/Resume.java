@@ -1,4 +1,4 @@
-package ru.leovalter.webapp.model;
+package ru.leovalter.basejava.model;
 
 import java.util.UUID;
 

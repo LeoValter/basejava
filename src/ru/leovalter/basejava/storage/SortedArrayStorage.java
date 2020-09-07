@@ -1,6 +1,6 @@
-package ru.leovalter.webapp.storage;
+package ru.leovalter.basejava.storage;
 
-import ru.leovalter.webapp.model.Resume;
+import ru.leovalter.basejava.model.Resume;
 
 import java.util.Arrays;
 

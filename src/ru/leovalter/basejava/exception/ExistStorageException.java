@@ -1,4 +1,4 @@
-package ru.leovalter.webapp.exception;
+package ru.leovalter.basejava.exception;
 
 public class ExistStorageException extends StorageException {
     public ExistStorageException(String uuid) {

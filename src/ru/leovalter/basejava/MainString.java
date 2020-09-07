@@ -1,4 +1,4 @@
-package ru.leovalter.webapp;
+package ru.leovalter.basejava;
 
 public class MainString {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package ru.leovalter.webapp;
+package ru.leovalter.basejava;
 
-import ru.leovalter.webapp.model.Resume;
+import ru.leovalter.basejava.model.Resume;
 
 import java.lang.reflect.Field;
 

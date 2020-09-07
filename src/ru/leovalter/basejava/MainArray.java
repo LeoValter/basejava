@@ -1,8 +1,8 @@
-package ru.leovalter.webapp;
+package ru.leovalter.basejava;
 
-import ru.leovalter.webapp.model.Resume;
-import ru.leovalter.webapp.storage.ArrayStorage;
-import ru.leovalter.webapp.storage.Storage;
+import ru.leovalter.basejava.model.Resume;
+import ru.leovalter.basejava.storage.ArrayStorage;
+import ru.leovalter.basejava.storage.Storage;
 
 import java.io.BufferedReader;
 import java.io.IOException;

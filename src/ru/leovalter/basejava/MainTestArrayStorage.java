@@ -1,7 +1,7 @@
-package ru.leovalter.webapp;
+package ru.leovalter.basejava;
 
-import ru.leovalter.webapp.model.Resume;
-import ru.leovalter.webapp.storage.ArrayStorage;
+import ru.leovalter.basejava.model.Resume;
+import ru.leovalter.basejava.storage.ArrayStorage;
 
 /**
  * Test for your ru.leovalter.webapp.storage.ArrayStorage implementation
