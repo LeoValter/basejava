@@ -7,6 +7,7 @@ import ru.leovalter.basejava.exception.NotExistStorageException;
 import ru.leovalter.basejava.model.Resume;
 
 public abstract class AbstractArrayStorageTest {
+
     private Storage storage;
 
     private static final String UUID_1 = "uuid1";
