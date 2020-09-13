@@ -11,8 +11,7 @@ import ru.leovalter.basejava.model.Resume;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public abstract class AbstractArrayStorageTest {
-
+public abstract class AbstractStorageTest {
     private final Storage storage;
 
     private static final String UUID_1 = "uuid1";
@@ -32,7 +31,7 @@ public abstract class AbstractArrayStorageTest {
         RESUME_4 = new Resume(UUID_4);
     }
 
-    protected AbstractArrayStorageTest(Storage storage) {
+    protected AbstractStorageTest(Storage storage) {
         this.storage = storage;
     }
 
@@ -68,6 +67,15 @@ public abstract class AbstractArrayStorageTest {
     }
 
     @Test
+    public void getAll() throws Exception {
+        Resume[] array = storage.getAll();
+        assertEquals(3, array.length);
+        assertEquals(RESUME_1, array[0]);
+        assertEquals(RESUME_2, array[1]);
+        assertEquals(RESUME_3, array[2]);
+    }
+
+    @Test
     public void save() throws Exception {
         storage.save(RESUME_4);
         assertSize(4);
@@ -79,6 +87,7 @@ public abstract class AbstractArrayStorageTest {
         storage.save(RESUME_1);
     }
 
+    // TODO remain only for Arrays implementations
     @Test(expected = StorageException.class)
     public void saveOverflow() throws Exception {
         try {
@@ -89,18 +98,6 @@ public abstract class AbstractArrayStorageTest {
             Assert.fail();
         }
         storage.save(new Resume());
-    }
-
-    @Test
-    public void get() throws Exception {
-        assertGet(RESUME_1);
-        assertGet(RESUME_2);
-        assertGet(RESUME_3);
-    }
-
-    @Test(expected = NotExistStorageException.class)
-    public void getNotExist() throws Exception {
-        storage.get("dummy");
     }
 
     @Test(expected = NotExistStorageException.class)
@@ -116,17 +113,19 @@ public abstract class AbstractArrayStorageTest {
     }
 
     @Test
-    public void getAll() throws Exception {
-        Resume[] array = storage.getAll();
-        assertEquals(3, array.length);
-        assertEquals(RESUME_1, array[0]);
-        assertEquals(RESUME_2, array[1]);
-        assertEquals(RESUME_3, array[2]);
-
+    public void get() throws Exception {
+        assertGet(RESUME_1);
+        assertGet(RESUME_2);
+        assertGet(RESUME_3);
     }
 
-    private void assertGet(Resume resume) {
-        assertEquals(resume, storage.get(resume.getUuid()));
+    @Test(expected = NotExistStorageException.class)
+    public void getNotExist() throws Exception {
+        storage.get("dummy");
+    }
+
+    private void assertGet(Resume r) {
+        assertEquals(r, storage.get(r.getUuid()));
     }
 
     private void assertSize(int size) {
