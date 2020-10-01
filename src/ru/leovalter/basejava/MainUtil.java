@@ -1,4 +1,4 @@
-package ru.leovalter.basejava.storage;
+package ru.leovalter.basejava;
 
 public class MainUtil {
     public static void main(String[] args) {
