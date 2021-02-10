@@ -2,6 +2,7 @@ package ru.leovalter.basejava.storage;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.leovalter.basejava.Config;
 import ru.leovalter.basejava.exception.ExistStorageException;
 import ru.leovalter.basejava.exception.NotExistStorageException;
 import ru.leovalter.basejava.model.*;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public abstract class AbstractStorageTest {
-    protected static final File STORAGE_DIR = new File("storage_files");
+    protected static final File STORAGE_DIR = Config.get().getStorageDir();
 
     protected Storage storage;
 
