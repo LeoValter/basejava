@@ -18,6 +18,26 @@ import static org.junit.Assert.assertTrue;
 import static ru.leovalter.basejava.TestData.*;
 
 public abstract class AbstractStorageTest {
+package ru.leovalter.basejava.storage;
+
+import org.junit.Before;
+import org.junit.Test;
+import ru.leovalter.basejava.Config;
+import ru.leovalter.basejava.exception.ExistStorageException;
+import ru.leovalter.basejava.exception.NotExistStorageException;
+import ru.leovalter.basejava.model.ContactType;
+import ru.leovalter.basejava.model.Resume;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static ru.leovalter.basejava.TestData.*;
+
+public abstract class AbstractStorageTest {
     protected static final File STORAGE_DIR = Config.get().getStorageDir();
 
     protected Storage storage;
@@ -49,9 +69,9 @@ public abstract class AbstractStorageTest {
     @Test
     public void update() throws Exception {
         Resume newResume = new Resume(UUID_1, "New Name");
-        newResume.addContact(ContactType.MAIL, "mail1@google.com");
-        newResume.addContact(ContactType.SKYPE, "NewSkype");
-        newResume.addContact(ContactType.MOBILE, "+7 921 222-22-22");
+        newResume.setContact(ContactType.MAIL, "mail1@google.com");
+        newResume.setContact(ContactType.SKYPE, "NewSkype");
+        newResume.setContact(ContactType.MOBILE, "+7 921 222-22-22");
         storage.update(newResume);
         assertTrue(newResume.equals(storage.get(UUID_1)));
     }
